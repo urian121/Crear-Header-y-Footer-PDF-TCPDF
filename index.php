@@ -1,7 +1,10 @@
 <?php
 require_once('tcpdf/tcpdf.php');
 date_default_timezone_set('America/Bogota');
-
+//Librerias para generar PDF
+//FPDF
+//mPDF
+//DOMPDF
 
 class MYPDF extends TCPDF {
 
@@ -16,21 +19,29 @@ class MYPDF extends TCPDF {
 		$this->SetAutoPageBreak(false, 0);
 		//$img_file = '/img/logo.png';
 		$img_file = dirname( __FILE__ ) .'/img/logo.png';
-		$this->Image($img_file, 10, 8, 20, 20, '', '', '', false, 30, '', false, false, 0);
+		$this->Image($img_file, 30, 28, 20, 20, '', '', '', false, 30, '', false, false, 0);
 		$this->SetAutoPageBreak($auto_page_break, $bMargin);
 		$this->setPageMark();
 
 		$this->Ln(20);
 		/**Logo Izquierdo  $this->Image('src imagen', Eje X, Eje Y, Tamaño de la Imagen );*/ 
 		$this->Image($logo, 180, 12, 15 );
-		$this->SetFont('helvetica','B',18); //('helvetica','B',8)
-		$this->Cell(30);
-		$this->Cell(105,30, 'Comunidad WebDeveloper',0,0,'C');
 
 		$this->SetFont('helvetica','B',8); //Tipo de fuente y tamaño de letra
 		$this->SetXY(130, 29);
 		$this->SetTextColor(34,68,136);
 		$this->Write(0, 'Bogotá - Colombia '. date('d-m-Y h:i A'));
+
+		$this->Ln(20);
+		$this->SetFont('helvetica','B',18); //('helvetica','B',8)
+		$this->Cell(30);
+		$this->Cell(105,30, 'Comunidad WebDeveloper',0,0,'C');
+		
+		$this->Ln(5); //Salto de Linea
+		$this->SetFont('helvetica','I',10);
+		$this->Cell(10);
+		$this->Cell(135,35, 'Bienvenidos ...!',0,0,'C');
+
 	}
 
 
